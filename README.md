@@ -4,7 +4,7 @@ Ce projet est un exemple de base d'un site web composé de `HTML`, `CSS` et `Jav
 
 Le site peut être accédé en ouvrant le fichier [index.html](./index.html) directement dans un navigateur.
 
-Le site peut également être accédé à travers la version déployée sur [GitHub](https://log2440.github.io/HTML-Cours-1/)
+Le site peut également être accédé à travers la version déployée sur [GitHub](https://log2440.github.io/Cours-1-HTML/)
 
 ## Page principale
 
