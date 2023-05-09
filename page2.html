@@ -2,13 +2,32 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <title>Page HTML Minimale</title>
+    <title>Requêtes HTTP envoyés par le code JS (AJAX)</title>
+    <script>
+      async function getPlanetData() {
+        const input = document.getElementById("planet-input");
+        const serverResponse = await fetch(`https://swapi.dev/api/planets/${input.value}`);
+        const messageField = document.getElementById("planet-result");
+        if (serverResponse.status === 404) {
+          messageField.textContent = "Aucune planette trouvée";
+        } else {
+          const jsonInfo = await serverResponse.json();
+          messageField.textContent = `La planette ${jsonInfo.name} a une population de ${jsonInfo.population}`;
+        }
+      }
+    </script>
   </head>
   <body>
-    <header>Entête de la page</header>
+    <header>
+      <p>Trouver une planette dans l'univers de Star Wars</p>
+      <i>Information récupérée à l'aide de <a href="https://swapi.dev/">SWAPI</a> (Star Wars API)</i>
+    </header>
     <main>
-      <p>Hello World!</p>
+      <form id="planet-form" onsubmit="getPlanetData();return false">
+        <input type="number" min="1" max="61" id="planet-input" />
+        <button>Chercher</button>
+      </form>
+      <p id="planet-result"></p>
     </main>
-    <footer>Pied de page</footer>
   </body>
 </html>
