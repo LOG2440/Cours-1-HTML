@@ -41,3 +41,32 @@ Cette fonction est exécutée à chaque clic du bouton et effectue plusieurs man
   ```
 
 La gestion de l'événement `click` du premier bouton de la page est faite directement dans le code HTML à travers `onclick="window.print()"`. Même si cette méthode est fonctionnelle, il est déconseillé de l'utiliser pour éviter d'alourdir le HTML et est donnée seulement à des fins de démonstration ici.
+
+## Requête HTTP avec JS
+
+Il est possible d'envoyer des requêtes `HTTP` à travers le code disponible dans la balise `<script>` du document `page2.html`. Cette page présente un exemple de la technique AJAX (_Asynchronous JavaScript and XML_) où une requête HTTP est envoyée par le code vers un serveur et la page est modifiée en fonction de la réponse reçue sans avoir à recharger la page. L'envoi de requête est _asynchrone_, c'est-à-dire que la page n'est bloquée en attendant la réponse du serveur.
+
+La page communique avec l'API (_Application Programming Interface_) [swapi](https://swapi.dev/) : un service qui donne accès à des informations de l'univers de _Star Wars_. 
+Dans cet exemple, l'interface permet de récupérer l'information de la population d'une planète en fonction de son identifiant et l'afficher à l'écran. _Note_ : certaines planètes n'ont pas cette information et la valeur `unkown` est alors affichée. La valeur maximale du champs de saisi, `61`, ne correspond à aucune planète.
+
+La valeur de l'identifiant est récupérée de la page et envoyée au serveur à travers la méthode `fetch` :
+
+```js
+const input = document.getElementById("planet-input");
+const serverResponse = await fetch(`https://swapi.dev/api/planets/${input.value}`);
+```
+Si le code de retour est `404` (Not Found), un message est affiché à l'écran. Sinon, le corps de la réponse est transformé en objet `JSON` (JavaScript Object Notation) et ses attributs `name` et `populations` sont affichés à l'écran :
+
+```js
+const messageField = document.getElementById("planet-result");
+if (serverResponse.status === 404) {
+  messageField.textContent = "Aucune planète trouvée";
+} else {
+  const jsonInfo = await serverResponse.json();
+  messageField.textContent = `La planette ${jsonInfo.name} a une population de ${jsonInfo.population}`;
+}
+```
+
+À titre d'exemple :
+- L'identifiant `1` retournera `La planette Tatooine a une population de 200000`.
+- L'identifiant `61` retournera `Aucune planète trouvée`.

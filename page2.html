@@ -1,14 +1,47 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Page HTML Minimale</title>
-  </head>
-  <body>
-    <header>Entête de la page</header>
-    <main>
-      <p>Hello World!</p>
-    </main>
-    <footer>Pied de page</footer>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Requêtes HTTP envoyés par le code JS (AJAX)</title>
+  <script>
+    async function getPlanetData() {
+      const input = document.getElementById("planet-input");
+      const serverResponse = await fetch(`https://swapi.dev/api/planets/${input.value}`);
+      const messageField = document.getElementById("planet-result");
+      if (serverResponse.status === 404) {
+        messageField.textContent = "Aucune planète trouvée";
+      } else {
+        const jsonInfo = await serverResponse.json();
+        messageField.textContent = `La planette ${jsonInfo.name} a une population de ${jsonInfo.population}`;
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <header>
+    <h2>Trouver une planette dans l'univers de Star Wars</h2>
+  </header>
+  <main>
+    <section id="info">
+      <i>Information récupérée à l'aide de <a href="https://swapi.dev/">SWAPI</a> (Star Wars API)</i>
+      <p>Les identifiants 1 à 60 retourneront la population d'une planète existante (certaines données auront la valeur
+        "unknown" pour leur population).
+      <p>
+      <p> L'id <em>61</em> obtiendra un code de retour <strong>404</strong> et affichera "Aucune planète trouvée" à la
+        place.</p>
+    </section>
+    <form id="planet-form" onsubmit="getPlanetData();return false">
+      <fieldset>
+        <legend>Population de planète</legend>
+        <label for="planet-input">Entrez un identifiant de planète :</label>
+        <input type="number" min="1" max="61" id="planet-input" value="1" />
+        <button>Chercher</button>
+      </fieldset>
+    </form>
+    <p id="planet-result"></p>
+  </main>
+</body>
+
 </html>
