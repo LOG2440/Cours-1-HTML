@@ -11,7 +11,7 @@ function domManipulation() {
     document.body.appendChild(newElement); // rajouter comme enfant à body
 }
 
-window.onload = () => {
     const domButton = document.getElementById("domManipulator");
     domButton.addEventListener("click", domManipulation);
-}
+    window.onload = () => {
+    }
