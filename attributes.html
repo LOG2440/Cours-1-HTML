@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css" />
+  <title>Impact des attributs HTML</title>
+  <style>
+    label {
+      margin: 10px;
+      display:block
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav id="navigation">
+      <ul>
+        <li>
+          <a href="https://polymtl.ca" target="_blank">Polytechnique</a>
+        </li>
+        <li><a href="./page2.html">Notre Page 2</a></li>
+        <li><a href="./attributes.html">Attributs HTML</a></li>
+      </ul>
+    </nav>
+    <h1>Exemples d'impacts des attributs sur un élément HTML</h1>
+  </header>
+  <main>
+    <h2>Le champs de saisi &lt;input&gt; est très versatile à l'aide de son attribut <em>type</em> qui peut modifier son visuel ET son comportement.</h2>
+    <h2>Notez que chaque navigateur implémente ces visuels et comportement à sa manière.<br> Ouvrez le sélecteur de couleur sur Firefox et Chrome pour voir les différences entre les 2 implémentations.</h2>
+    <div id="label-container">
+      <label>Texte :
+        <input type="text">
+      </label>
+      <label>Mot de passe :
+        <input type="password">
+      </label>
+      <label>Checkbox :
+        <input type="checkbox">
+      </label>
+      <label>Date :
+        <input type="date">
+      </label>
+      <label>Intervale :
+        <input type="range">
+      </label>
+      <label>Couleur :
+        <input type="color">
+      </label>
+    </div>
+  </main>
+</body>
+
+</html>

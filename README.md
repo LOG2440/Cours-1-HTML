@@ -19,6 +19,7 @@ La page contient également des liens vers d'autres pages à travers des balises
   - le lien [./page2.html](./page2.html) qui est un chemin relatif vers le document [page2.html](./page2.html) (page secondaire)
   - le lien [https://polymtl.ca](https://polymtl.ca) qui est un chemin absolu vers le site web de Polytechnique Montréal.
     - l'attribut et sa valeur `target="_blank"` indiquent que le lien sera ouvert dans un nouvel onglet. 
+  - le lien [./attributes.html](./attributes.html) qui est un chemin relatif vers le document [attributes.html](./attributes.html) démontrant l'utilisation et les impacts des attributs HTML, notamment l'attribut `type` de la balise `<input>`.
 
 ## Manipulation du DOM avec JS
 
@@ -70,3 +71,12 @@ if (serverResponse.status === 404) {
 À titre d'exemple :
 - L'identifiant `1` retournera `La planette Tatooine a une population de 200000`.
 - L'identifiant `61` retournera `Aucune planète trouvée`.
+
+
+## Attributs HTML
+
+Les attributs HTML sont des informations supplémentaires que l'on peut ajouter à une balise pour modifier son comportement ou son apparence. Certains attributs sont globaux et peuvent être utilisés sur n'importe quelle balise, tandis que d'autres sont spécifiques à une balise en particulier. Par exemple, l'attribut `id` est un attribut global qui peut être utilisé sur n'importe quelle balise, tandis que l'attribut `type` de la balise `<input>` est spécifique à cette balise.
+
+Les attributs peuvent avoir un grand impact sur le rendu et le comportement d'une balise. Par exemple, l'attribut `type` de la balise `<input>` peut changer le type de champ de saisie affiché à l'écran et son comportement. À noter que l'affichage et le comportement des attributs peuvent varier d'un navigateur à l'autre : ouvrez la page dans différents navigateurs (ex : `Chrome` et `Firefox`) pour observer les différences.
+
+Certains attributs peuvent avoir n'importe quelle valeur, tandis que d'autres ont des valeurs prédéfinies. Par exemple, l'attribut `type` de la balise `<input>` a des valeurs prédéfinies telles que `text`, `password`, `checkbox`, etc. Contrairement, l'attribut `id` peut avoir n'importe quelle valeur, mais celle-ci doit être unique dans le document. L'attribut `class` peut avoir plusieurs valeurs séparées par des espaces et ses valeurs peuvent se retrouver sur plusieurs éléments.
