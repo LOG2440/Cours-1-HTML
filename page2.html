@@ -7,12 +7,12 @@
   <script>
     async function getPlanetData() {
       const input = document.getElementById("planet-input");
-      const serverResponse = await fetch(`https://swapi.dev/api/planets/${input.value}`);
+      const serverResponse = await fetch(`https://swapi.tech/api/planets/${input.value}`);
       const messageField = document.getElementById("planet-result");
       if (serverResponse.status === 404) {
         messageField.textContent = "Aucune planète trouvée";
       } else {
-        const jsonInfo = await serverResponse.json();
+        const jsonInfo = (await serverResponse.json()).result.properties;
         messageField.textContent = `La planette ${jsonInfo.name} a une population de ${jsonInfo.population}`;
       }
     }
